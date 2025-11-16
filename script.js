@@ -492,6 +492,95 @@ if ('IntersectionObserver' in window) {
     });
 }
 
+// ===== FAQ Toggle Function =====
+function toggleFAQ(element) {
+    const faqItem = element.parentElement;
+    const faqAnswer = faqItem.querySelector('.faq-answer');
+    const faqIcon = element.querySelector('.faq-icon');
+    const isOpen = faqItem.classList.contains('active');
+    
+    // Close all FAQ items
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+        item.querySelector('.faq-icon').textContent = '+';
+    });
+    
+    // Open clicked item if it wasn't open
+    if (!isOpen) {
+        faqItem.classList.add('active');
+        faqIcon.textContent = '−';
+    }
+}
+
+// ===== Interactive Stats Animation =====
+function animateInteractiveStats() {
+    const statCards = document.querySelectorAll('.stat-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                const card = entry.target;
+                const targetValue = parseInt(card.getAttribute('data-stat'));
+                const suffix = card.getAttribute('data-suffix') || '';
+                const statValue = card.querySelector('.stat-value');
+                
+                let current = 0;
+                const increment = targetValue / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= targetValue) {
+                        statValue.textContent = targetValue + suffix;
+                        clearInterval(timer);
+                    } else {
+                        statValue.textContent = Math.floor(current) + suffix;
+                    }
+                }, 30);
+                
+                card.dataset.animated = 'true';
+                observer.unobserve(card);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statCards.forEach(card => observer.observe(card));
+}
+
+// Initialize interactive stats on load
+window.addEventListener('load', () => {
+    animateInteractiveStats();
+});
+
+// ===== Tooltip System =====
+function initTooltips() {
+    const tooltipElements = document.querySelectorAll('[data-tooltip]');
+    
+    tooltipElements.forEach(element => {
+        element.addEventListener('mouseenter', function(e) {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = this.getAttribute('data-tooltip');
+            document.body.appendChild(tooltip);
+            
+            const rect = this.getBoundingClientRect();
+            tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+            tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
+            
+            setTimeout(() => tooltip.classList.add('show'), 10);
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            const tooltip = document.querySelector('.tooltip');
+            if (tooltip) {
+                tooltip.classList.remove('show');
+                setTimeout(() => tooltip.remove(), 200);
+            }
+        });
+    });
+}
+
+// Initialize tooltips
+initTooltips();
+
 // ===== Console Message =====
 console.log('%c👋 Hello! Welcome to my portfolio!', 'font-size: 20px; color: #6366f1; font-weight: bold;');
 console.log('%cBuilt with ❤️ by Rakesh Babu Gogineni', 'font-size: 14px; color: #8b5cf6;');

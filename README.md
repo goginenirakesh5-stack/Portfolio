@@ -36,7 +36,7 @@ My personal portfolio website showcasing my work as a Full Stack Developer & Sof
 
 ## 📧 Contact
 
-* **Email:** rakesh.gogineni@example.com
+* **Email:** goginenirakesh5@gmail.com
 * **GitHub:** [@goginenirakesh5-stack](https://github.com/goginenirakesh5-stack)
 * **LinkedIn:** [Rakesh Babu Gogineni](https://www.linkedin.com/in/rakesh-babu-gogineni)
 

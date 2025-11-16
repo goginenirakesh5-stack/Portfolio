@@ -20,7 +20,15 @@ This guide will help you host your portfolio on a custom domain to showcase your
    - Scroll down to "Pages" in the left sidebar
    - Or go directly to: https://github.com/goginenirakesh5-stack/Portfolio/settings/pages
 
-4. **Configure Source**
+4. **Configure Source** (Choose ONE method)
+
+   **Option A: Using GitHub Actions (Recommended if you have `.github/workflows/pages.yml`)**
+   - Under "Source", select: **"GitHub Actions"**
+   - This will use your workflow file to deploy
+   - Click "Save"
+   - Go to "Actions" tab and trigger the workflow if needed
+
+   **Option B: Using Branch Deployment (Simpler method)**
    - Under "Source", select:
      - **Branch**: `main`
      - **Folder**: `/ (root)`
@@ -29,7 +37,7 @@ This guide will help you host your portfolio on a custom domain to showcase your
 5. **Wait for deployment**
    - GitHub will build and deploy your site
    - Your site will be available at: `https://goginenirakesh5-stack.github.io/Portfolio/`
-   - This may take a few minutes
+   - This may take a few minutes (check the "Actions" tab for progress)
 
 ## 🌍 Step 2: Set Up Custom Domain
 
@@ -176,6 +184,39 @@ Update your portfolio to use your custom domain:
    - Enable domain lock at registrar
 
 ## 🐛 Troubleshooting
+
+### "404 - There isn't a GitHub Pages site here" Error
+
+If you see this error, GitHub Pages isn't enabled or configured correctly:
+
+1. **Check GitHub Pages Settings**
+   - Go to: `https://github.com/goginenirakesh5-stack/Portfolio/settings/pages`
+   - Make sure "Source" is set to either:
+     - **"GitHub Actions"** (if using workflow), OR
+     - **"Deploy from a branch"** → Branch: `main`, Folder: `/ (root)`
+   - Click "Save" if you made changes
+
+2. **If using GitHub Actions:**
+   - Go to the "Actions" tab in your repository
+   - Check if the workflow has run successfully
+   - If not, manually trigger it: Click "Deploy to GitHub Pages" → "Run workflow"
+   - Wait for the workflow to complete (green checkmark)
+
+3. **If using Branch Deployment:**
+   - Make sure your `index.html` is in the root directory
+   - Verify you're pushing to the `main` branch (not `master`)
+   - Push a new commit to trigger deployment:
+     ```bash
+     git add .
+     git commit -m "Trigger GitHub Pages deployment"
+     git push origin main
+     ```
+
+4. **Wait 5-10 minutes** after saving settings for GitHub to build your site
+
+5. **Check repository visibility:**
+   - If repository is private, you need GitHub Pro/Team/Enterprise for Pages
+   - Make repository public OR upgrade your GitHub plan
 
 ### Site not loading after DNS setup
 

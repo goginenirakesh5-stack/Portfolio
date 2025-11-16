@@ -79,8 +79,18 @@ To customize this portfolio for your own use:
 Your portfolio is automatically hosted on GitHub Pages. To enable:
 
 1. Go to repository Settings → Pages
-2. Select branch: `main` and folder: `/ (root)`
-3. Your site will be live at: `https://goginenirakesh5-stack.github.io/Portfolio/`
+2. **Choose ONE method:**
+   - **Option A (Recommended)**: Select **"GitHub Actions"** as source (uses `.github/workflows/pages.yml`)
+   - **Option B**: Select branch: `main` and folder: `/ (root)`
+3. Click "Save"
+4. If using GitHub Actions, go to "Actions" tab and ensure workflow runs successfully
+5. Your site will be live at: `https://goginenirakesh5-stack.github.io/Portfolio/`
+
+**Troubleshooting 404 Error:**
+- Make sure Pages is enabled in Settings → Pages
+- Check that your repository is public (private repos need GitHub Pro)
+- Wait 5-10 minutes after enabling for deployment to complete
+- See [DOMAIN_SETUP.md](DOMAIN_SETUP.md) for detailed troubleshooting
 
 ### Custom Domain Setup
 

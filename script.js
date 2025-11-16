@@ -389,6 +389,37 @@ function animateCounter(element, target, duration = 2000) {
     }, 16);
 }
 
+// ===== Animated Statistics Counter =====
+function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+            element.textContent = target + (target >= 100 ? '+' : '');
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(start) + (target >= 100 ? '+' : '');
+        }
+    }, 16);
+}
+
+// Observe statistics for animation
+const statNumbers = document.querySelectorAll('.stat-number');
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+            const target = parseInt(entry.target.getAttribute('data-target'));
+            animateCounter(entry.target, target);
+            entry.target.dataset.animated = 'true';
+        }
+    });
+}, { threshold: 0.5 });
+
+statNumbers.forEach(stat => {
+    statsObserver.observe(stat);
+});
+
 // ===== Page Load Animation =====
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';

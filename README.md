@@ -4,7 +4,10 @@ My personal portfolio website showcasing my work as a Full Stack Developer & Sof
 
 ## 🌐 Live Site
 
-[View Portfolio](https://goginenirakesh5-stack.github.io/Portfolio/)
+- **GitHub Pages**: [View Portfolio](https://goginenirakesh5-stack.github.io/Portfolio/)
+- **Custom Domain**: Configure your own domain (see [DOMAIN_SETUP.md](DOMAIN_SETUP.md))
+
+> 💡 **Want to use a custom domain?** Check out the [Domain Setup Guide](DOMAIN_SETUP.md) to host your portfolio on your own domain (e.g., `rakeshbabugogineni.com`)!
 
 ## ✨ Features
 
@@ -68,6 +71,41 @@ To customize this portfolio for your own use:
 * **Skills** - Technical skills with animated progress bars
 * **Projects** - Featured projects with interactive cards
 * **Contact** - Contact form and social links
+
+## 🌐 Hosting & Domain Setup
+
+### GitHub Pages (Free)
+
+Your portfolio is automatically hosted on GitHub Pages. To enable:
+
+1. Go to repository Settings → Pages
+2. Select branch: `main` and folder: `/ (root)`
+3. Your site will be live at: `https://goginenirakesh5-stack.github.io/Portfolio/`
+
+### Custom Domain Setup
+
+To use your own domain (e.g., `yourname.com`):
+
+1. **Purchase a domain** from providers like:
+   - Namecheap
+   - GoDaddy
+   - Google Domains
+   - Cloudflare
+
+2. **Follow the setup guide**: See [DOMAIN_SETUP.md](DOMAIN_SETUP.md) for detailed instructions
+
+3. **Quick steps**:
+   - Edit `CNAME` file with your domain
+   - Configure DNS records at your registrar
+   - Enable custom domain in GitHub Pages settings
+   - Wait for SSL certificate (24-48 hours)
+
+**Benefits of custom domain:**
+- ✅ Professional appearance
+- ✅ Better for client presentations
+- ✅ Improved SEO
+- ✅ Brand recognition
+- ✅ Free SSL certificate (HTTPS)
 
 ## 📄 License
 

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Research Assistant - LangChain & LangGraph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Research Assistant</h1>
+            <p class="subtitle">Powered by LangChain & LangGraph</p>
+        </header>
+
+        <div class="main-content">
+            <!-- File Upload Section -->
+            <section class="upload-section">
+                <h2>📄 Upload Documents</h2>
+                <div class="upload-area" id="upload-area">
+                    <input type="file" id="file-input" accept=".txt,.pdf,.md" hidden>
+                    <div class="upload-content">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p>Click to upload or drag and drop</p>
+                        <p class="file-types">PDF, TXT, MD files supported</p>
+                    </div>
+                </div>
+                <div id="upload-status" class="status-message"></div>
+            </section>
+
+            <!-- Query Section -->
+            <section class="query-section">
+                <h2>💬 Ask Questions</h2>
+                <div class="query-input-group">
+                    <textarea id="query-input" placeholder="Enter your question about the uploaded documents..."></textarea>
+                    <div class="button-group">
+                        <button id="simple-query-btn" class="btn btn-primary">Simple Q&A</button>
+                        <button id="research-btn" class="btn btn-secondary">Research Mode (LangGraph)</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="results-section" style="display: none;">
+                <h2>📊 Results</h2>
+                <div id="results-content"></div>
+            </section>
+
+            <!-- Research Steps (for LangGraph) -->
+            <section class="research-steps" id="research-steps" style="display: none;">
+                <h3>🔍 Research Process</h3>
+                <div id="steps-content"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+

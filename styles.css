@@ -494,6 +494,39 @@ body {
     height: 400px;
 }
 
+.profile-photo-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-xl);
+    border: 6px solid var(--bg-primary);
+    animation: fadeInScale 1s ease;
+    transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .profile-placeholder {
     width: 100%;
     height: 100%;
@@ -509,6 +542,39 @@ body {
     animation: pulse 2s ease infinite;
     position: relative;
     z-index: 2;
+}
+
+.tagline-badge {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gradient-primary);
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    box-shadow: var(--shadow-lg);
+    z-index: 3;
+    animation: fadeInUp 1s ease 0.5s both;
+    white-space: nowrap;
+}
+
+.tagline-text {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.tagline-main {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0.5rem 0;
+    animation: fadeIn 1s ease 0.3s both;
 }
 
 @keyframes pulse {
@@ -1246,11 +1312,25 @@ section {
 
     .hero-image {
         order: -1;
+        margin-bottom: 2rem;
     }
 
     .image-wrapper {
         width: 300px;
         height: 300px;
+    }
+
+    .tagline-badge {
+        bottom: -15px;
+        padding: 0.6rem 1.5rem;
+    }
+
+    .tagline-text {
+        font-size: 0.95rem;
+    }
+
+    .tagline-main {
+        font-size: 2rem;
     }
 
     .name {

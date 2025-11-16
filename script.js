@@ -379,26 +379,45 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
-// ===== Project Card 3D Tilt Effect =====
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+// ===== Enhanced 3D Tilt Effect for All Cards =====
+function init3DTiltEffect(selector) {
+    document.querySelectorAll(selector).forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 15;
+            const rotateY = (centerX - x) / 15;
+            
+            const currentTransform = card.style.transform || '';
+            const baseTransform = currentTransform.includes('translateY') 
+                ? currentTransform.match(/translateY\([^)]+\)/)?.[0] || 'translateY(-15px)'
+                : 'translateY(-15px)';
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) ${baseTransform} scale(1.03)`;
+        });
         
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
     });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-    });
-});
+}
+
+// Apply 3D tilt to various card types
+init3DTiltEffect('.project-card');
+init3DTiltEffect('.service-card');
+init3DTiltEffect('.why-card');
+init3DTiltEffect('.testimonial-card');
+init3DTiltEffect('.highlight-card');
+init3DTiltEffect('.stat-card');
+init3DTiltEffect('.tip-card');
+init3DTiltEffect('.tech-category');
+init3DTiltEffect('.insight-category');
+init3DTiltEffect('.process-content');
 
 // ===== Counter Animation =====
 function animateCounter(element, target, duration = 2000) {

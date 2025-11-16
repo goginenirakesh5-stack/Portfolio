@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Listing Finder Agent - AI-Powered Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏠 Airbnb Listing Finder Agent</h1>
+            <p class="subtitle">AI-Powered Natural Language Search</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-box">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="Try: 'Find a cozy apartment in New York under $150 with WiFi and kitchen'"
+                        autocomplete="off"
+                    >
+                    <button id="search-btn" class="search-btn">
+                        <span class="search-icon">🔍</span>
+                        Search
+                    </button>
+                </div>
+                <div class="example-queries">
+                    <span class="example-label">Try these:</span>
+                    <button class="example-btn" data-query="beachfront villa in Miami with pool">Beachfront Miami</button>
+                    <button class="example-btn" data-query="2 bedroom apartment under $200">2 Bedroom Under $200</button>
+                    <button class="example-btn" data-query="luxury penthouse in Los Angeles">Luxury LA</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>AI Agent is searching...</p>
+        </div>
+
+        <div id="results-section" class="results-section hidden">
+            <div class="results-header">
+                <h2 id="results-title">Search Results</h2>
+                <span id="results-count" class="results-count"></span>
+            </div>
+            <div id="results-grid" class="results-grid"></div>
+        </div>
+
+        <div id="no-results" class="no-results hidden">
+            <div class="no-results-icon">🔍</div>
+            <h3>No listings found</h3>
+            <p>Try adjusting your search criteria or use different keywords.</p>
+        </div>
+
+        <div id="error" class="error hidden">
+            <p>An error occurred. Please try again.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

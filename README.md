@@ -4,6 +4,7 @@ My personal portfolio website showcasing my work as a Full Stack Developer & Sof
 
 ## 🌐 Live Site
 
+- **Netlify**: [View Portfolio on Netlify](https://glistening-moonbeam-3cb84b.netlify.app/)
 - **GitHub Pages**: [View Portfolio](https://goginenirakesh5-stack.github.io/Portfolio/)
 - **Custom Domain**: Configure your own domain (see [DOMAIN_SETUP.md](DOMAIN_SETUP.md))
 
@@ -73,6 +74,30 @@ To customize this portfolio for your own use:
 * **Contact** - Contact form and social links
 
 ## 🌐 Hosting & Domain Setup
+
+### Netlify (Recommended - Forms Enabled)
+
+Your portfolio is deployed on Netlify with contact form integration:
+
+1. **Find Your Netlify URL:**
+   - Go to: https://app.netlify.com/
+   - Click on your site
+   - Your URL will be displayed at the top (e.g., `https://your-site-name-123.netlify.app`)
+
+2. **Contact Form:**
+   - Form submissions are sent to: `goginenirakesh5@gmail.com`
+   - View submissions in Netlify Dashboard → Forms → contact
+
+3. **Auto-Deployment:**
+   - Netlify automatically deploys when you push to GitHub
+   - Changes go live in 1-2 minutes
+
+**Benefits:**
+- ✅ Contact form with email notifications
+- ✅ Fast global CDN
+- ✅ Automatic SSL certificate
+- ✅ Custom domain support
+- ✅ Form spam protection
 
 ### GitHub Pages (Free)
 

@@ -1,0 +1,60 @@
+# Netlify Configuration File
+# This file configures your Netlify deployment
+
+[build]
+  # Publish directory (where your static files are)
+  publish = "."
+  
+  # Build command (empty for static sites)
+  command = ""
+
+# Form handling configuration
+[[plugins]]
+  package = "@netlify/plugin-form-handler"
+
+# Redirect rules (optional - for SPA routing if needed)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Cache static assets
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/script.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Environment variables (optional - set in Netlify dashboard)
+# [context.production.environment]
+#   NETLIFY_EMAIL = "goginenirakesh5@gmail.com"
+

@@ -28,19 +28,51 @@ A comprehensive lead generation and management system with full API connectivity
 
 ## 📋 Prerequisites
 
-- Python 3.8 or higher
-- pip (Python package manager)
+- **Python 3.8 or higher** (includes pip)
 - Modern web browser (Chrome, Firefox, Safari, Edge)
+
+## ⚠️ First Time Setup - Installing Python
+
+### If Python is NOT installed:
+
+1. **Download Python**
+   - Visit: https://www.python.org/downloads/
+   - Click "Download Python 3.12.x" (latest version)
+
+2. **Install Python**
+   - Run the downloaded installer
+   - **IMPORTANT**: ✅ Check "Add Python to PATH" at the bottom
+   - Click "Install Now"
+   - Wait for installation to complete
+
+3. **Verify Installation**
+   - Close and reopen your terminal/command prompt
+   - Run: `python --version` (should show version number)
+   - Run: `pip --version` (should show pip version)
+
+4. **Run Setup Checker** (Windows)
+   ```bash
+   check_setup.bat
+   ```
+   This will verify Python and pip are installed correctly.
+
+> 📖 **Detailed installation guide**: See [INSTALL_PYTHON.md](INSTALL_PYTHON.md) for step-by-step instructions.
 
 ## 🔧 Installation
 
-1. **Clone the repository**
+1. **Clone the repository** (if not already done)
 ```bash
 git clone https://github.com/goginenirakesh5-stack/Portfolio.git
 cd Portfolio/lead-generation-system
 ```
 
-2. **Create a virtual environment (recommended)**
+2. **Verify Python is installed**
+```bash
+python --version
+pip --version
+```
+
+3. **Create a virtual environment (recommended)**
 ```bash
 # Windows
 python -m venv venv
@@ -51,10 +83,12 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-3. **Install dependencies**
+4. **Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
+
+> 💡 **Troubleshooting**: If `python` doesn't work, try `py` instead (Windows Python Launcher)
 
 ## 🚀 Running the Application
 

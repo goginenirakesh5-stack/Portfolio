@@ -188,7 +188,7 @@ document.querySelectorAll('.btn-primary').forEach(button => {
     });
 });
 
-// ===== Contact Form =====
+// ===== Contact Form - Netlify Forms Integration =====
 const contactForm = document.getElementById('contact-form');
 
 contactForm.addEventListener('submit', async (e) => {
@@ -201,13 +201,42 @@ contactForm.addEventListener('submit', async (e) => {
     submitButton.innerHTML = '<span class="loading"></span> Sending...';
     submitButton.disabled = true;
     
-    // Simulate form submission (replace with actual form handling)
-    setTimeout(() => {
-        submitButton.innerHTML = '✓ Message Sent!';
-        submitButton.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+    // Get form data
+    const formData = new FormData(contactForm);
+    
+    try {
+        // Submit to Netlify Forms
+        const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
+        });
         
-        // Reset form
-        contactForm.reset();
+        if (response.ok) {
+            // Success
+            submitButton.innerHTML = '✓ Message Sent!';
+            submitButton.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Show success message
+            showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitButton.textContent = originalText;
+                submitButton.style.background = '';
+                submitButton.disabled = false;
+            }, 3000);
+        } else {
+            throw new Error('Form submission failed');
+        }
+    } catch (error) {
+        // Error handling
+        submitButton.textContent = '✗ Try Again';
+        submitButton.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+        showNotification('Failed to send message. Please try again or email me directly.', 'error');
         
         // Reset button after 3 seconds
         setTimeout(() => {
@@ -215,10 +244,7 @@ contactForm.addEventListener('submit', async (e) => {
             submitButton.style.background = '';
             submitButton.disabled = false;
         }, 3000);
-        
-        // Show success message
-        showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-    }, 1500);
+    }
 });
 
 // ===== Notification System =====
@@ -228,11 +254,12 @@ function showNotification(message, type = 'info') {
     notification.textContent = message;
     
     // Add styles
+    const bgColor = type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#6366f1';
     notification.style.cssText = `
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'success' ? '#10b981' : '#6366f1'};
+        background: ${bgColor};
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 10px;
